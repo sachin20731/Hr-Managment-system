@@ -29,5 +29,27 @@ public class EmployeeController {
                 .orElseGet(() -> ResponseEntity.status(401).body("Invalid login credentials"));
     }
 
+
+    @PostMapping
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.saveEmployee(employee));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Employee>> getAllEmployees() {
+        return ResponseEntity.ok(employeeService.getAllEmployees());
+    }
+
+
+
+
+
+
+
     // Other CRUD endpoints...
 }
