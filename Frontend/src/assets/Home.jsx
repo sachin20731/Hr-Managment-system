@@ -106,6 +106,7 @@
 
 // export default Home;
 
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -115,32 +116,37 @@ function Home() {
   const [form, setForm] = useState({
     email: '',
     password: '',
-    department: '',
-    designation: ''
   });
 
-
   const navigate = useNavigate();
-
- 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`http://localhost:8080/api/employees/login`, form);
-      const user = response.data;
-      alert(`Welcome ${user.name}`);
-      navigate('/sidebar');
-    } catch (err) {
-      alert('Invalid credentials');
-      console.error(err);
+  e.preventDefault();
+  try {
+   axios.post(
+  'http://localhost:8080/api/employees/login',
+  {
+    email: form.email,
+    password: form.password
+  },
+  {
+    headers: {
+      'Content-Type': 'application/json'
     }
-  };
-
+  }
+);
+    
+    alert(`Welcome`);
+    navigate('/employees'); // Navigate after successful login
+  } catch (err) {
+    alert('Invalid credentials');
+    console.error(err);
+  }
+};
   return (
     <div className="w-full h-screen bg-gradient-to-r from-green-100 to-green-400 pt-20 font-sans">
       <div className="container mx-auto flex flex-col lg:flex-row justify-center items-center h-full px-6">
@@ -161,10 +167,6 @@ function Home() {
             className="flex flex-col gap-4 p-6 w-96 border border-green-200 bg-green-100 shadow-lg shadow-green-500/50 rounded-3xl"
           >
             <h1 className="text-4xl text-center text-green-900 font-semibold">Login</h1>
-
-            
-
-            
 
             {/* Email */}
             <div>
@@ -209,3 +211,7 @@ function Home() {
 }
 
 export default Home;
+
+
+
+
