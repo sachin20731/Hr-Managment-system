@@ -29,6 +29,23 @@ function Home() {
             <form className="flex flex-col gap-4 p-6 w-96 border border-green-200 bg-green-100 shadow-lg shadow-green-500/50 rounded-3xl">
               <h1 className="text-4xl text-center text-green-900 font-semibold">Login</h1>
 
+              {/* Department Dropdown */}
+              <div>
+                <label className="text-lg text-green-900 font-medium" htmlFor="department">Department</label>
+                <select
+                  id="department"
+                  className="border border-gray-300 rounded-md p-2 mt-1 w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+                  required
+                >
+                  <option value="">Select your department</option>
+                  <option value="it">IT</option>
+                  <option value="finance">Finance</option>
+                  <option value="hr">Human Resources</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="operations">Operations</option>
+                </select>
+              </div>
+
               {/* Designation Dropdown */}
               <div>
                 <label className="text-lg text-green-900 font-medium" htmlFor="designation">Designation</label>
@@ -72,7 +89,7 @@ function Home() {
 
               {/* Login Button */}
               <Link
-                to="/dashboard"
+                to="/sidebar"
                 className="bg-green-800 text-white rounded-md p-2 mt-2 hover:bg-green-700 text-center"
               >
                 Login
@@ -81,11 +98,7 @@ function Home() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="text-center text-green-900 mt-10">
-          <p className="text-lg">Admin Panel</p>
-          <p className="text-sm">© 2025 G+ Education</p>
-        </div>
+        
       </div>
     </>
   );

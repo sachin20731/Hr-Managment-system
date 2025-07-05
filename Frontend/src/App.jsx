@@ -3,6 +3,8 @@ import React from 'react'
 import Home from './assets/Home'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import AdminDashboard from './assets/AdminDashboard'
+
 function App() {
 
 
@@ -10,6 +12,9 @@ function App() {
    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/sidebar" element={<AdminDashboard />} />
+        {/* Add other routes here as needed */}
+        {/* <Route path="/dashboard" element={<AdminDashboard />} /> */}
         
        
       </Routes>
